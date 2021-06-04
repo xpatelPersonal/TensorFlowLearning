@@ -47,3 +47,16 @@ print("Dense Layer Added to Sequential Model\n")
 model.compile(loss='mean_squared_error',optimizer=tf.keras.optimizers.Adam(0.1))
 history = model.fit(celsius_q, fahrenheit_a, epochs=500, verbose=False)
 print("Model Training Complete\n")
+
+# Add MatLab package to plot Epochs and Loss Magnitude
+import matplotlib.pyplot as plt
+plt.xlabel('Epoch Number')
+plt.ylabel("Loss Magnitude")
+plt.plot(history.history['loss'])
+
+# Print Model Prediction for 100 Degrees Celsius
+print("Print Model Prediction for 100 Degrees Celsius")
+print(model.predict([100.0]))
+
+# Print Internal Variables of the Dense Layer
+print("Dense Layer Variables: {}".format(l0.get_weights()))
