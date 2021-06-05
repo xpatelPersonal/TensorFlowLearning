@@ -45,6 +45,9 @@ print("Dense Layer Added to Sequential Model\n")
 #       Optimizer Function - a way of adjusting internal values in order to reduce the loss
 
 model.compile(loss='mean_squared_error',optimizer=tf.keras.optimizers.Adam(0.1))
+
+model.fit(celsius_q, fahrenheit_a, epochs=500, verbose=False)
+
 history = model.fit(celsius_q, fahrenheit_a, epochs=500, verbose=False)
 print("Model Training Complete\n")
 
@@ -60,3 +63,6 @@ print(model.predict([100.0]))
 
 # Print Internal Variables of the Dense Layer
 print("Dense Layer Variables: {}".format(l0.get_weights()))
+
+
+# Experimentation: Adding More Dense layers with different Units, and therefore more variables
