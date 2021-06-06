@@ -40,4 +40,25 @@ def normalize(images, labels):
     train_dataset = train_dataset.cache()
     test_dataset  = test_datatset.cache()
 
- 
+# Take a Single Image, and Remove the Color Dimension by Reshaping
+    for image, label in test_dataset.take(1):
+        break
+    image = image.numpy().reshape((28,28))
+
+    # plot the Image
+    plt.figure()
+    plt.imshow(image, cmap=plt.cm.binary)
+    plt.colorbar()
+    plt.grid(False)
+    plt.show()
+
+plt.figure(figsize=(10,10))
+for i, (image, label) in enumerate(test_dataset.take(25)):
+    image = image.numpy().reshape((28,28))
+    plt.subplot(5,5,i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.grid(False)
+    plt.imshow(image, cmap=plt.cm.binary)
+    plt.xlabel(class_names[label])
+plt.show()
